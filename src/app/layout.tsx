@@ -3,7 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import { ReactNode } from "react";
 import Providers from "@/components/Providers";
 
@@ -24,8 +24,8 @@ export default function RootLayout({
           <Toaster />
           <Sonner />
           <ThemeProvider attribute="class" defaultTheme="dark">
-            <Navbar />
-            <main className="min-h-screen">
+            <Sidebar />
+            <main className="lg:ml-64 min-h-screen">
               {children}
             </main>
           </ThemeProvider>

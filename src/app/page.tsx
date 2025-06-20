@@ -1,157 +1,156 @@
-import { BookOpen, Clock, Compass, MessageCircle, Users, Bell } from 'lucide-react';
+import { BookOpen, Clock, Compass, MessageCircle, Bell } from 'lucide-react';
 
 export default function Home() {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+
+  const prayerTimes = {
+    Fajr: "04:30",
+    Dhuhr: "13:15",
+    Asr: "16:45",
+    Maghrib: "19:30",
+    Isha: "21:00",
+  };
+
+  const nextPrayer = "Dhuhr";
+  const timeUntilNext = "2h 15m";
+
   return (
-    <div className="root-container">
+    <div className="p-6 lg:p-8">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-navy via-navy to-olive text-ivory">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="logo mb-8">
-            <div className="text-6xl font-serif mb-4">☪️</div>
-            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-              Noorion
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Your Modern Islamic Social Platform
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gold text-navy px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg">
-              Get Started
-            </button>
-            <button className="border-2 border-ivory text-ivory px-8 py-4 rounded-lg font-semibold hover:bg-ivory hover:text-navy transition-all duration-300">
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-ivory">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-serif font-bold text-navy text-center mb-16">
-            Discover Our Features
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Quran Audio */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="w-8 h-8 text-navy" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Quran Audio</h3>
-                <p className="text-gray-600 mb-4">Listen to beautiful recitations of the Holy Quran with multiple reciters and translations.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  Explore
-                </button>
-              </div>
-            </div>
-
-            {/* Prayer Times */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-ivory" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Prayer Times</h3>
-                <p className="text-gray-600 mb-4">Get accurate prayer times for your location with notifications and Qibla direction.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  View Times
-                </button>
-              </div>
-            </div>
-
-            {/* Qibla Direction */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Compass className="w-8 h-8 text-navy" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Qibla Direction</h3>
-                <p className="text-gray-600 mb-4">Find the direction of the Kaaba with our accurate compass and GPS technology.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  Find Qibla
-                </button>
-              </div>
-            </div>
-
-            {/* Secure Chat */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageCircle className="w-8 h-8 text-ivory" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Secure Chat</h3>
-                <p className="text-gray-600 mb-4">Connect with fellow Muslims through our end-to-end encrypted messaging system.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  Start Chat
-                </button>
-              </div>
-            </div>
-
-            {/* Islamic Classes */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-navy" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Islamic Classes</h3>
-                <p className="text-gray-600 mb-4">Join gender-separated classes to learn about Islam from qualified scholars.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  Join Class
-                </button>
-              </div>
-            </div>
-
-            {/* Daily Reminders */}
-            <div className="card bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-olive rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Bell className="w-8 h-8 text-ivory" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-navy mb-3">Daily Reminders</h3>
-                <p className="text-gray-600 mb-4">Receive daily Islamic reminders, duas, and motivational content to strengthen your faith.</p>
-                <button className="bg-navy text-ivory px-6 py-2 rounded-lg hover:bg-gold hover:text-navy transition-all duration-300">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Feed Preview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-serif font-bold text-navy text-center mb-16">
-            Connect with the Community
-          </h2>
-          <div className="card bg-ivory rounded-xl shadow-lg">
-            <div className="text-center">
-              <h3 className="text-2xl font-serif font-semibold text-navy mb-4">Islamic Social Feed</h3>
-              <p className="text-gray-600 mb-6">Share your Islamic journey, connect with fellow Muslims, and discover inspiring content from around the world.</p>
-              <button className="bg-navy text-ivory px-8 py-3 rounded-lg font-semibold hover:bg-gold hover:text-navy transition-all duration-300">
-                Explore Feed
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-navy text-ivory py-12">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <div className="logo-spin mb-6">
-            <div className="text-4xl">☪️</div>
-          </div>
-          <p className="text-lg mb-4">Noorion - Your Modern Islamic Social Platform</p>
-          <p className="read-the-docs text-sm opacity-75">
-            Building bridges of faith in the digital age
+      <section className="mb-8">
+        <div className="bg-gradient-to-br from-navy via-navy to-olive rounded-xl p-8 text-center">
+          <div className="text-6xl mb-4">☪️</div>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gold mb-4">
+            Welcome to Noorion
+          </h1>
+          <p className="text-xl text-ivory/90 mb-6">
+            Your Modern Islamic Social Platform
+          </p>
+          <p className="text-ivory/70">
+            {formattedDate}
           </p>
         </div>
-      </footer>
+      </section>
+
+      {/* Dashboard Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Prayer Times Card */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-serif font-semibold text-gold">Prayer Times</h2>
+            <Clock className="h-6 w-6 text-gold" />
+          </div>
+          <div className="space-y-3">
+            {Object.entries(prayerTimes).map(([name, time]) => (
+              <div key={name} className="flex justify-between items-center">
+                <span className={`font-medium ${name === nextPrayer ? 'text-gold' : 'text-ivory'}`}>
+                  {name}
+                </span>
+                <span className={`${name === nextPrayer ? 'text-gold font-bold' : 'text-ivory/70'}`}>
+                  {time}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 p-3 bg-gold/10 rounded-lg">
+            <p className="text-sm text-gold">
+              Next: {nextPrayer} in {timeUntilNext}
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <h2 className="text-xl font-serif font-semibold text-gold mb-4">Quick Actions</h2>
+          <div className="space-y-3">
+            <button className="w-full flex items-center space-x-3 p-3 rounded-lg bg-gold/10 text-ivory hover:bg-gold/20 transition-colors">
+              <BookOpen className="h-5 w-5 text-gold" />
+              <span>Listen to Quran</span>
+            </button>
+            <button className="w-full flex items-center space-x-3 p-3 rounded-lg bg-gold/10 text-ivory hover:bg-gold/20 transition-colors">
+              <Compass className="h-5 w-5 text-gold" />
+              <span>Find Qibla</span>
+            </button>
+            <button className="w-full flex items-center space-x-3 p-3 rounded-lg bg-gold/10 text-ivory hover:bg-gold/20 transition-colors">
+              <MessageCircle className="h-5 w-5 text-gold" />
+              <span>Open Chat</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Daily Reminder */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-serif font-semibold text-gold">Daily Reminder</h2>
+            <Bell className="h-6 w-6 text-gold" />
+          </div>
+          <blockquote className="text-ivory mb-4 italic">
+            &ldquo;The best of you are those who are best to their families.&rdquo;
+          </blockquote>
+          <p className="text-sm text-olive font-medium">
+            — Prophet Muhammad (ﷺ)
+          </p>
+        </div>
+
+        {/* Recent Activity */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <h2 className="text-xl font-serif font-semibold text-gold mb-4">Recent Activity</h2>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-3">
+              <div className="w-2 h-2 bg-gold rounded-full"></div>
+              <span className="text-ivory/70 text-sm">New class available: Fiqh of Salah</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-2 h-2 bg-olive rounded-full"></div>
+              <span className="text-ivory/70 text-sm">Conference reminder: Seerah Conference</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <div className="w-2 h-2 bg-gold rounded-full"></div>
+              <span className="text-ivory/70 text-sm">New message from Aisha</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Community Stats */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <h2 className="text-xl font-serif font-semibold text-gold mb-4">Community</h2>
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <span className="text-ivory">Online Users</span>
+              <span className="text-gold font-bold">1,247</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-ivory">Active Classes</span>
+              <span className="text-gold font-bold">12</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-ivory">Today&apos;s Posts</span>
+              <span className="text-gold font-bold">89</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Upcoming Events */}
+        <div className="bg-navy/50 rounded-xl p-6 border border-gold/20">
+          <h2 className="text-xl font-serif font-semibold text-gold mb-4">Upcoming Events</h2>
+          <div className="space-y-3">
+            <div className="p-3 bg-gold/10 rounded-lg">
+              <p className="text-sm font-medium text-gold">Seerah Conference</p>
+              <p className="text-xs text-ivory/70">Tomorrow, 2:00 PM</p>
+            </div>
+            <div className="p-3 bg-olive/10 rounded-lg">
+              <p className="text-sm font-medium text-olive">Arabic Class</p>
+              <p className="text-xs text-ivory/70">Monday, 7:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
