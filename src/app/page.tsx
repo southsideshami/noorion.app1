@@ -27,21 +27,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <FeatureCard title="Quran Audio" description="Listen to the Holy Quran" component={<Quran />} />
-        <FeatureCard title="Prayer Times" description="View daily prayer times" component={<PrayerTimes />} />
-        <FeatureCard title="Qibla Direction" description="Find the direction of the Kaaba" component={<Qibla />} />
-        <FeatureCard title="Social Feed" description="Connect with the community" component={<SocialFeed />} />
-        <FeatureCard title="Private Chat" description="Secure and private messaging" component={<Chat />} />
-        <FeatureCard title="Islamic Classes" description="Gender-separated learning" component={<Classes />} />
+      <section className="py-20 bg-dark">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <FeatureCard
+              icon="📖"
+              title="Quran Audio"
+              description="Listen to the Holy Quran from world-renowned reciters."
+            />
+            <FeatureCard
+              icon="🕌"
+              title="Prayer Times"
+              description="Stay on top of your daily prayers with accurate timings."
+            />
+            <FeatureCard
+              icon="🧭"
+              title="Qibla Direction"
+              description="Find the direction of the Kaaba from anywhere in the world."
+            />
+            <FeatureCard
+              icon="✍️"
+              title="Feed"
+              description="Share reflections and connect with a righteous community."
+            />
+            <FeatureCard
+              icon="💬"
+              title="Chat"
+              description="Engage in secure, private conversations with friends and family."
+            />
+            <FeatureCard
+              icon="🎓"
+              title="Classes"
+              description="Enroll in gender-separated classes on various Islamic topics."
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
 }
 
-const FeatureCard = ({ title, description, component }: { title: string, description: string, component: React.ReactNode }) => (
-  <div className="bg-dark/50 rounded-lg shadow-lg p-6 hover:shadow-gold/20 transition-shadow duration-300">
-    <h3 className="text-2xl font-serif text-gold mb-2">{title}</h3>
-    <div className="text-ivory">{component}</div>
+const FeatureCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => (
+  <div className="bg-dark/50 p-8 rounded-lg text-center border border-ivory/10 hover:border-gold transition-colors duration-300 transform hover:-translate-y-1">
+    <div className="text-5xl mb-4">{icon}</div>
+    <h3 className="text-2xl font-bold font-serif text-gold mb-2">{title}</h3>
+    <p className="text-ivory">{description}</p>
   </div>
 );
