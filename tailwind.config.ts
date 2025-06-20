@@ -10,14 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#001f3f",
-        gold: "#FFD700",
-        olive: "#808000",
-        ivory: "#FFFFF0",
+        dark: "#2A2C41",
+        gold: "#FDBF50",
+        olive: "#8DA05E",
+        ivory: "#E9EDE0",
+        light: "#F3F4F6",
       },
       fontFamily: {
-        serif: ["Georgia", "serif"],
-        sans: ["Helvetica", "Arial", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+        sans: ["Inter", "sans-serif"],
       },
     },
   },

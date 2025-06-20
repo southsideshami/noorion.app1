@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-ivory text-navy font-sans;
+    @apply bg-light text-dark font-sans;
   }
   .dark body {
-    @apply bg-navy text-ivory;
+    @apply bg-dark text-light;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
