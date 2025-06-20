@@ -75,10 +75,6 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
@@ -86,6 +82,33 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .root-container {
+    @apply max-w-7xl mx-auto px-8 text-center;
+  }
+
+  .logo {
+    @apply h-24 p-6 transition-all duration-300;
+    will-change: filter;
+  }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #FDBF50aa);
+  }
+
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+
+  .card {
+    @apply p-8;
+  }
+
+  .read-the-docs {
+    @apply text-muted-foreground;
   }
 }
 
@@ -136,5 +159,20 @@
 
   .hover\:text-gold:hover {
     color: #FDBF50;
+  }
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-spin {
+      animation: logo-spin infinite 20s linear;
+    }
   }
 }
