@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 
 const QiblaPage = () => {
   const [direction, setDirection] = useState(0);
-  const [prayerTimes, setPrayerTimes] = useState({
+  const prayerTimes = {
     Fajr: "04:30",
     Dhuhr: "13:15",
     Asr: "16:45",
     Maghrib: "19:30",
     Isha: "21:00",
-  });
+  };
 
   // Mock location and Qibla calculation for now
   useEffect(() => {
@@ -35,7 +35,7 @@ const QiblaPage = () => {
           </div>
         </div>
         <div className="bg-dark/50 p-8 rounded-lg">
-          <h2 className="text-2xl font-serif text-ivory mb-4">Today's Prayer Times</h2>
+          <h2 className="text-2xl font-serif text-ivory mb-4">Today&apos;s Prayer Times</h2>
           <ul className="space-y-2 text-lg">
             {Object.entries(prayerTimes).map(([name, time]) => (
               <li key={name} className="flex justify-between">

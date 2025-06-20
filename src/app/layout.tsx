@@ -30,7 +30,7 @@ export default function RootLayout({
           <div className="w-full text-center p-2 bg-gold text-dark">
             This is a prototype preview of Noorion.
           </div>
-          <main className="flex-grow container mx-auto p-4">
+          <main className="flex-grow">
             {children}
           </main>
         </ThemeProvider>

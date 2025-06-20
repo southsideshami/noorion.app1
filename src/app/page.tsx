@@ -1,16 +1,10 @@
-import Quran from "@/features/quran";
-import PrayerTimes from "@/features/prayer-times";
-import Qibla from "@/features/qibla";
-import SocialFeed from "@/features/social-feed";
-import Chat from "@/features/chat";
-import Classes from "@/features/classes";
 import { BookOpen, Clock, Compass, Users, MessageSquare, GraduationCap } from 'lucide-react';
 
 export default function Home() {
   return (
     <main>
       <section className="w-full py-32 bg-dark text-center bg-gradient-to-br from-dark to-gray-800">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold font-serif text-gold mb-4">
             Welcome to Noorion
           </h1>

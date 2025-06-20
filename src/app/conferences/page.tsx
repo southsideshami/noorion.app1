@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 
 const mockConferences = [
   { id: 1, title: "The Seerah Conference", speaker: "Dr. Yasir Qadhi", date: "2024-09-15", location: "Online" },
@@ -8,7 +8,7 @@ const mockConferences = [
 ];
 
 const ConferencesPage = () => {
-  const [conferences, setConferences] = useState(mockConferences);
+  const conferences = mockConferences;
 
   return (
     <div className="container mx-auto p-4">
