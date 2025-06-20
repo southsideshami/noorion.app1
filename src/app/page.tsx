@@ -7,14 +7,24 @@ import Classes from "@/features/classes";
 
 export default function Home() {
   return (
-    <div className="space-y-12">
-      <section className="text-center py-20 rounded-lg bg-gradient-to-br from-dark to-dark/90">
-        <h1 className="text-5xl font-bold font-serif text-gold mb-4">
-          Welcome to Noorion
-        </h1>
-        <p className="text-xl text-ivory max-w-2xl mx-auto">
-          Your modern Islamic social app for spiritual growth and community connection.
-        </p>
+    <main>
+      <section className="w-full py-32 bg-dark text-center bg-gradient-to-br from-dark to-gray-800">
+        <div className="container mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold font-serif text-gold mb-4">
+            Welcome to Noorion
+          </h1>
+          <p className="text-lg md:text-xl text-ivory max-w-3xl mx-auto mb-8">
+            This is a modern Islamic social app for reflection, connection, and simplicity.
+          </p>
+          <div className="flex justify-center gap-4">
+            <button className="px-8 py-3 bg-gold text-dark font-bold rounded-full hover:bg-gold/80 transition-colors">
+              Explore Quran
+            </button>
+            <button className="px-8 py-3 bg-transparent border border-gold text-gold font-bold rounded-full hover:bg-gold hover:text-dark transition-colors">
+              Join the Community
+            </button>
+          </div>
+        </div>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -25,7 +35,7 @@ export default function Home() {
         <FeatureCard title="Private Chat" description="Secure and private messaging" component={<Chat />} />
         <FeatureCard title="Islamic Classes" description="Gender-separated learning" component={<Classes />} />
       </section>
-    </div>
+    </main>
   );
 }
 
