@@ -4,6 +4,7 @@ import Qibla from "@/features/qibla";
 import SocialFeed from "@/features/social-feed";
 import Chat from "@/features/chat";
 import Classes from "@/features/classes";
+import { BookOpen, Clock, Compass, Users, MessageSquare, GraduationCap } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -31,32 +32,32 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
-              icon="📖"
+              icon={<BookOpen size={48} className="text-olive" />}
               title="Quran Audio"
               description="Listen to the Holy Quran from world-renowned reciters."
             />
             <FeatureCard
-              icon="🕌"
+              icon={<Clock size={48} className="text-olive" />}
               title="Prayer Times"
               description="Stay on top of your daily prayers with accurate timings."
             />
             <FeatureCard
-              icon="🧭"
+              icon={<Compass size={48} className="text-olive" />}
               title="Qibla Direction"
               description="Find the direction of the Kaaba from anywhere in the world."
             />
             <FeatureCard
-              icon="✍️"
+              icon={<Users size={48} className="text-olive" />}
               title="Feed"
               description="Share reflections and connect with a righteous community."
             />
             <FeatureCard
-              icon="💬"
+              icon={<MessageSquare size={48} className="text-olive" />}
               title="Chat"
               description="Engage in secure, private conversations with friends and family."
             />
             <FeatureCard
-              icon="🎓"
+              icon={<GraduationCap size={48} className="text-olive" />}
               title="Classes"
               description="Enroll in gender-separated classes on various Islamic topics."
             />
@@ -67,9 +68,9 @@ export default function Home() {
   );
 }
 
-const FeatureCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => (
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => (
   <div className="bg-dark/50 p-8 rounded-lg text-center border border-ivory/10 hover:border-gold transition-colors duration-300 transform hover:-translate-y-1">
-    <div className="text-5xl mb-4">{icon}</div>
+    <div className="flex justify-center items-center mb-4">{icon}</div>
     <h3 className="text-2xl font-bold font-serif text-gold mb-2">{title}</h3>
     <p className="text-ivory">{description}</p>
   </div>
