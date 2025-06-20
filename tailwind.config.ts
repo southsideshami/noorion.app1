@@ -43,13 +43,13 @@ const config: Config = {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
-        // Brand colors
-        navy: "var(--navy)",
-        gold: "var(--gold)",
-        olive: "var(--olive)",
-        ivory: "var(--ivory)",
-        dark: "var(--navy)",
-        light: "var(--background)",
+        // Brand colors with exact hex codes
+        navy: "#2A2C41",
+        gold: "#FDBF50",
+        olive: "#8DA05E",
+        ivory: "#E9EDE0",
+        dark: "#2A2C41",
+        light: "#F3F4F6",
       },
       borderRadius: {
         lg: "var(--radius)",
