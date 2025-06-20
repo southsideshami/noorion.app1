@@ -27,9 +27,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <div className="w-full text-center p-2 bg-gold text-dark">
-            This is a prototype preview of Noorion.
-          </div>
           <main className="flex-grow">
             {children}
           </main>
