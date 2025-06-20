@@ -7,11 +7,11 @@ const Index = () => {
   const [isLoggedIn] = useState(false);
 
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-navy">
       {/* Prototype Banner */}
       <div className="bg-gold/10 border-b border-gold/20 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-dark/80">
+          <p className="text-center text-sm text-navy/80">
             This is a prototype preview of Noorion
           </p>
         </div>

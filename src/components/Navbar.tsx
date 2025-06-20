@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-dark/95 backdrop-blur-md text-light shadow-lg border-b border-gold/20">
+    <nav className="sticky top-0 z-50 bg-navy/95 backdrop-blur-md text-ivory shadow-lg border-b border-gold/20">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -35,12 +35,12 @@ const Navbar = () => {
 
           {/* Navigation Links - Hidden on mobile */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-light hover:text-gold transition-colors font-medium">Home</Link>
-            <Link href="/quran" className="text-light hover:text-gold transition-colors font-medium">Quran</Link>
-            <Link href="/qibla" className="text-light hover:text-gold transition-colors font-medium">Qibla</Link>
-            <Link href="/feed" className="text-light hover:text-gold transition-colors font-medium">Feed</Link>
-            <Link href="/chat" className="text-light hover:text-gold transition-colors font-medium">Chat</Link>
-            <Link href="/classes" className="text-light hover:text-gold transition-colors font-medium">Classes</Link>
+            <Link href="/" className="text-ivory hover:text-gold transition-colors font-medium">Home</Link>
+            <Link href="/quran" className="text-ivory hover:text-gold transition-colors font-medium">Quran</Link>
+            <Link href="/qibla" className="text-ivory hover:text-gold transition-colors font-medium">Qibla</Link>
+            <Link href="/feed" className="text-ivory hover:text-gold transition-colors font-medium">Feed</Link>
+            <Link href="/chat" className="text-ivory hover:text-gold transition-colors font-medium">Chat</Link>
+            <Link href="/classes" className="text-ivory hover:text-gold transition-colors font-medium">Classes</Link>
           </div>
 
           {/* Right side - Prayer time and theme toggle */}

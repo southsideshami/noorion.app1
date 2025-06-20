@@ -47,14 +47,14 @@ const SocialFeed: React.FC<SocialFeedProps> = ({ isLoggedIn }) => {
           <p className="text-ivory mb-3">
             Join the community to see more posts and connect with fellow Muslims
           </p>
-          <button className="bg-gold text-dark px-6 py-2 rounded-full font-medium hover:bg-gold/80 transition-colors">
+          <button className="bg-gold text-navy px-6 py-2 rounded-full font-medium hover:bg-gold/80 transition-colors">
             Sign Up
           </button>
         </div>
       )}
       
       {mockPosts.map((post) => (
-        <div key={post.id} className="bg-dark/50 rounded-xl p-6 border border-ivory/10">
+        <div key={post.id} className="bg-navy/50 rounded-xl p-6 border border-ivory/10">
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0">
               <div className="w-12 h-12 bg-olive/20 rounded-full flex items-center justify-center">
