@@ -1,15 +1,10 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import { Compass, MapPin, Navigation } from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { MapPin, Navigation } from 'lucide-react';
 
 interface Location {
   latitude: number;
   longitude: number;
-}
-
-interface QiblaData {
-  direction: number;
-  distance: number;
 }
 
 const KAABA_COORDS = {
@@ -59,7 +54,7 @@ export default function QiblaCompass() {
   };
 
   // Get user location
-  const getLocation = () => {
+  const getLocation = useCallback(() => {
     if (!navigator.geolocation) {
       setError('Geolocation is not supported by this browser');
       setIsLoading(false);
@@ -98,7 +93,7 @@ export default function QiblaCompass() {
         maximumAge: 60000
       }
     );
-  };
+  }, []);
 
   // Handle device orientation for compass
   useEffect(() => {
@@ -122,7 +117,7 @@ export default function QiblaCompass() {
   // Get location on component mount
   useEffect(() => {
     getLocation();
-  }, []);
+  }, [getLocation]);
 
   // Calculate the rotation needed for the compass
   const compassRotation = qiblaDirection - compassHeading;

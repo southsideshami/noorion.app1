@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FaApple, FaGoogle } from 'react-icons/fa';
 
@@ -83,7 +83,7 @@ export default function AuthPage() {
           setError(data.error || 'Registration failed');
         }
       }
-    } catch (error) {
+    } catch {
       setError('An error occurred');
     } finally {
       setIsLoading(false);

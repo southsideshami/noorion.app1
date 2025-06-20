@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const surahs = [
   { number: 1, name: "Al-Fatiha" },
@@ -20,22 +20,22 @@ const QuranPlaylistPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  const handlePlay = useCallback((surah: (typeof surahs)[0]) => {
+    setCurrentSurah(surah);
+    setIsPlaying(true);
+  }, []);
+
   useEffect(() => {
     if (audioRef.current && isPlaying) {
       audioRef.current.play();
     }
-  }, [currentSurah]);
-
-  const handlePlay = (surah: (typeof surahs)[0]) => {
-    setCurrentSurah(surah);
-    setIsPlaying(true);
-  };
+  }, [currentSurah, isPlaying]);
 
   const audioUrl = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${currentSurah.number}.mp3`;
 
   return (
     <div className="bg-[#2A2C41] text-white p-6 rounded-xl max-w-3xl mx-auto shadow-lg">
-      <h1 className="text-3xl font-serif mb-4">📖 Qur'an Playlist</h1>
+      <h1 className="text-3xl font-serif mb-4">📖 Qur&apos;an Playlist</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Playlist */}
