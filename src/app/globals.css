@@ -1,18 +1,140 @@
-@import '@fontsource/playfair-display';
-@import '@fontsource/inter';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @layer base {
+  :root {
+    --background: #F3F4F6;
+    --foreground: #2A2C41;
+
+    --card: #FFFFFF;
+    --card-foreground: #2A2C41;
+
+    --popover: #FFFFFF;
+    --popover-foreground: #2A2C41;
+
+    --primary: #2A2C41;
+    --primary-foreground: #FFFFFF;
+
+    --secondary: #E9EDE0;
+    --secondary-foreground: #2A2C41;
+
+    --muted: #E9EDE0;
+    --muted-foreground: #6B7280;
+
+    --accent: #FDBF50;
+    --accent-foreground: #2A2C41;
+
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #D1D5DB;
+    --input: #E5E7EB;
+    --ring: #FDBF50;
+
+    --radius: 0.5rem;
+
+    --olive: #8DA05E;
+    --ivory: #E9EDE0;
+    --gold: #FDBF50;
+    --navy: #2A2C41;
+  }
+
+  .dark {
+    --background: #2A2C41;
+    --foreground: #F3F4F6;
+
+    --card: #3A3D52;
+    --card-foreground: #F3F4F6;
+
+    --popover: #3A3D52;
+    --popover-foreground: #F3F4F6;
+
+    --primary: #FDBF50;
+    --primary-foreground: #2A2C41;
+
+    --secondary: #4A4D62;
+    --secondary-foreground: #F3F4F6;
+
+    --muted: #4A4D62;
+    --muted-foreground: #9CA3AF;
+
+    --accent: #FDBF50;
+    --accent-foreground: #2A2C41;
+
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #4A4D62;
+    --input: #4A4D62;
+    --ring: #FDBF50;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
   body {
-    @apply bg-dark text-light font-sans;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
   }
-  .light body {
-    @apply bg-light text-dark;
-  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-navy {
+    color: #2A2C41;
+  }
+
+  .text-gold {
+    color: #FDBF50;
+  }
+
+  .text-olive {
+    color: #8DA05E;
+  }
+
+  .bg-navy {
+    background-color: #2A2C41;
+  }
+
+  .bg-gold {
+    background-color: #FDBF50;
+  }
+
+  .bg-olive {
+    background-color: #8DA05E;
+  }
+
+  .bg-ivory {
+    background-color: #E9EDE0;
+  }
+
+  .border-gold {
+    border-color: #FDBF50;
+  }
+
+  .hover\:bg-gold:hover {
+    background-color: #FDBF50;
+  }
+
+  .hover\:text-gold:hover {
+    color: #FDBF50;
   }
 }
