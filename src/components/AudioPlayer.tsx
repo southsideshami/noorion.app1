@@ -36,7 +36,7 @@ const AudioPlayer = () => {
   };
 
   return (
-    <div className="bg-dark/50 p-6 rounded-lg shadow-lg w-full max-w-md mx-auto">
+    <div className="bg-navy/50 p-6 rounded-lg shadow-lg w-full max-w-md mx-auto">
       <div className="mb-4">
         <label htmlFor="surah-select" className="block text-sm font-medium text-ivory mb-2">
           Choose a Surah
@@ -48,7 +48,7 @@ const AudioPlayer = () => {
             const surah = surahs.find(s => s.id === parseInt(e.target.value));
             if (surah) setSelectedSurah(surah);
           }}
-          className="w-full p-2 rounded-md bg-dark text-light border border-gold"
+          className="w-full p-2 rounded-md bg-navy text-ivory border border-gold"
         >
           {surahs.map((surah) => (
             <option key={surah.id} value={surah.id}>
@@ -61,7 +61,7 @@ const AudioPlayer = () => {
         <audio ref={audioRef} />
         <button
           onClick={togglePlayPause}
-          className="px-4 py-2 rounded-full bg-gold text-dark font-bold hover:bg-gold/80"
+          className="px-4 py-2 rounded-full bg-gold text-navy font-bold hover:bg-gold/80"
         >
           {isPlaying ? 'Pause' : 'Play'}
         </button>

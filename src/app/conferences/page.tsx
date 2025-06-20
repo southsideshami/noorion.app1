@@ -15,14 +15,14 @@ const ConferencesPage = () => {
       <h1 className="text-4xl font-serif text-gold mb-8 text-center">Upcoming Conferences</h1>
       {/* Filter section placeholder */}
       <div className="mb-8 flex justify-center space-x-4">
-        <input type="date" className="p-2 rounded-md bg-dark text-light border border-gold" />
-        <select className="p-2 rounded-md bg-dark text-light border border-gold">
+        <input type="date" className="p-2 rounded-md bg-navy text-ivory border border-gold" />
+        <select className="p-2 rounded-md bg-navy text-ivory border border-gold">
           <option>All Categories</option>
         </select>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {conferences.map(conf => (
-          <div key={conf.id} className="bg-dark/50 rounded-lg shadow-lg p-6">
+          <div key={conf.id} className="bg-navy/50 rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-serif text-gold mb-2">{conf.title}</h2>
             <p className="text-ivory mb-1"><strong>Speaker:</strong> {conf.speaker}</p>
             <p className="text-ivory mb-1"><strong>Date:</strong> {conf.date}</p>

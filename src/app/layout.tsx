@@ -2,13 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
-
-const queryClient = new QueryClient();
+import { ReactNode } from "react";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Noorion - Modern Islamic Social Platform",
@@ -22,24 +19,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans">
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Navbar />
-              <main className="flex-grow">
-                {children}
-              </main>
-            </ThemeProvider>
-          </TooltipProvider>
-        </QueryClientProvider>
+      <body className="font-sans bg-navy text-ivory">
+        <Providers>
+          <Toaster />
+          <Sonner />
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <Navbar />
+            <main className="min-h-screen">
+              {children}
+            </main>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

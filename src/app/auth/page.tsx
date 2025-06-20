@@ -6,7 +6,7 @@ const AuthPage = () => {
 
   return (
     <div className="container mx-auto p-4 flex justify-center items-center min-h-[70vh]">
-      <div className="w-full max-w-md bg-dark/50 p-8 rounded-lg">
+      <div className="w-full max-w-md bg-navy/50 p-8 rounded-lg">
         <h1 className="text-3xl font-serif text-gold mb-6 text-center">
           {isLogin ? 'Login' : 'Register'}
         </h1>
@@ -15,22 +15,22 @@ const AuthPage = () => {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full p-3 rounded-md bg-dark text-light border border-gold"
+              className="w-full p-3 rounded-md bg-navy text-ivory border border-gold"
             />
           )}
           <input
             type="email"
             placeholder="Email Address"
-            className="w-full p-3 rounded-md bg-dark text-light border border-gold"
+            className="w-full p-3 rounded-md bg-navy text-ivory border border-gold"
           />
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-3 rounded-md bg-dark text-light border border-gold"
+            className="w-full p-3 rounded-md bg-navy text-ivory border border-gold"
           />
           <button
             type="submit"
-            className="w-full p-3 rounded-md bg-gold text-dark font-bold hover:bg-gold/80"
+            className="w-full p-3 rounded-md bg-gold text-navy font-bold hover:bg-gold/80"
           >
             {isLogin ? 'Login' : 'Create Account'}
           </button>

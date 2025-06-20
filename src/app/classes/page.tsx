@@ -41,7 +41,7 @@ const ClassesPage = () => {
         {activeTab === 'men' && (
           <div className="space-y-4">
             {mockMensClasses.map(c => (
-              <div key={c.id} className="bg-dark/50 p-4 rounded-lg">
+              <div key={c.id} className="bg-navy/50 p-4 rounded-lg">
                 <h3 className="text-xl font-serif text-gold">{c.title}</h3>
                 <p className="text-ivory">{c.time}</p>
               </div>
@@ -51,7 +51,7 @@ const ClassesPage = () => {
         {activeTab === 'women' && (
           <div className="space-y-4">
             {mockWomensClasses.map(c => (
-              <div key={c.id} className="bg-dark/50 p-4 rounded-lg">
+              <div key={c.id} className="bg-navy/50 p-4 rounded-lg">
                 <h3 className="text-xl font-serif text-gold">{c.title}</h3>
                 <p className="text-ivory">{c.time}</p>
               </div>
