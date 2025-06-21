@@ -211,55 +211,55 @@ const QuranPlaylistPlayer = () => {
   const audioUrl = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${currentSurah.number}.mp3`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1b2e] to-[#2A2C41] text-white p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a1b2e] to-[#2A2C41] text-white p-3 sm:p-4 md:p-6 lg:p-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 text-center text-[#FDBF50]">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 text-center text-[#FDBF50] px-2">
           Quran Playlist
         </h1>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Surah Selection */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-full flex items-center justify-between p-4 bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl border border-[#FDBF50]/30 hover:bg-[#4A4C61]/80 transition-all duration-300 shadow-lg"
+                className="w-full flex items-center justify-between p-4 sm:p-5 bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl border border-[#FDBF50]/30 hover:bg-[#4A4C61]/80 transition-all duration-300 shadow-lg min-h-[60px] sm:min-h-[70px]"
                 aria-label="Select surah"
               >
-                <span className="text-left">
-                  <div className="font-semibold text-lg">{currentSurah.number}. {currentSurah.name}</div>
-                  <div className="text-sm text-gray-300">{currentSurah.arabic} • {currentSurah.translation}</div>
+                <span className="text-left flex-1">
+                  <div className="font-semibold text-base sm:text-lg">{currentSurah.number}. {currentSurah.name}</div>
+                  <div className="text-xs sm:text-sm text-gray-300">{currentSurah.arabic} • {currentSurah.translation}</div>
                 </span>
-                <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 flex-shrink-0 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-[#3A3C51]/95 backdrop-blur-md rounded-xl border border-[#FDBF50]/30 max-h-96 overflow-y-auto z-10 shadow-2xl">
-                  <div className="p-4 border-b border-[#FDBF50]/20">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-[#3A3C51]/95 backdrop-blur-md rounded-xl border border-[#FDBF50]/30 max-h-[60vh] sm:max-h-96 overflow-y-auto z-10 shadow-2xl">
+                  <div className="p-3 sm:p-4 border-b border-[#FDBF50]/20 sticky top-0 bg-[#3A3C51]/95">
                     <input
                       type="text"
                       placeholder="Search surahs..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full p-3 bg-[#2A2C41]/80 rounded-lg border border-[#FDBF50]/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDBF50]/50"
+                      className="w-full p-3 bg-[#2A2C41]/80 rounded-lg border border-[#FDBF50]/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FDBF50]/50 text-sm sm:text-base"
                     />
                   </div>
-                  <div className="max-h-80 overflow-y-auto">
+                  <div className="max-h-[50vh] sm:max-h-80 overflow-y-auto">
                     {filteredSurahs.map((surah) => (
                       <button
                         key={surah.number}
                         onClick={() => handlePlay(surah)}
-                        className={`w-full text-left p-4 hover:bg-[#4A4C61]/80 transition-colors border-b border-[#FDBF50]/10 ${
+                        className={`w-full text-left p-3 sm:p-4 hover:bg-[#4A4C61]/80 transition-colors border-b border-[#FDBF50]/10 min-h-[60px] sm:min-h-[70px] ${
                           currentSurah.number === surah.number ? 'bg-[#FDBF50]/20' : ''
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <div>
-                            <div className="font-semibold">{surah.number}. {surah.name}</div>
-                            <div className="text-sm text-gray-300">{surah.arabic}</div>
+                          <div className="flex-1">
+                            <div className="font-semibold text-sm sm:text-base">{surah.number}. {surah.name}</div>
+                            <div className="text-xs sm:text-sm text-gray-300">{surah.arabic}</div>
                             <div className="text-xs text-gray-400">{surah.translation}</div>
                           </div>
-                          <div className="text-right text-xs text-gray-400">
+                          <div className="text-right text-xs text-gray-400 flex-shrink-0 ml-2">
                             <div>Pages: {surah.pages}</div>
                             <div>{surah.revelation}</div>
                           </div>
@@ -272,15 +272,15 @@ const QuranPlaylistPlayer = () => {
             </div>
 
             {/* Audio Player */}
-            <div className="bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FDBF50]/30 shadow-lg">
+            <div className="bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-[#FDBF50]/30 shadow-lg">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-xl text-[#FDBF50]">{currentSurah.name}</h3>
+                <h3 className="font-semibold text-lg sm:text-xl text-[#FDBF50] truncate">{currentSurah.name}</h3>
                 <button
                   onClick={togglePlayPause}
-                  className="p-3 bg-[#FDBF50] text-[#2A2C41] rounded-full hover:bg-[#FDBF50]/80 transition-all duration-300 shadow-lg hover:scale-105"
+                  className="p-3 sm:p-4 bg-[#FDBF50] text-[#2A2C41] rounded-full hover:bg-[#FDBF50]/80 transition-all duration-300 shadow-lg hover:scale-105 min-w-[50px] min-h-[50px] flex items-center justify-center"
                   aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
                 >
-                  {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
+                  {isPlaying ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="h-5 w-5 sm:h-6 sm:w-6" />}
                 </button>
               </div>
               
@@ -305,30 +305,30 @@ const QuranPlaylistPlayer = () => {
               
               <div className="space-y-4 mt-4">
                 {/* Progress Bar */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <input
                     type="range"
                     min={0}
                     max={duration || 1}
                     value={progress}
                     onChange={handleSeek}
-                    className="flex-1 h-2 bg-[#2A2C41] rounded-lg appearance-none cursor-pointer slider"
+                    className="flex-1 h-3 sm:h-2 bg-[#2A2C41] rounded-lg appearance-none cursor-pointer slider"
                     aria-label="Seek audio"
                   />
-                  <span className="text-sm text-gray-300 min-w-[80px] text-right">
+                  <span className="text-xs sm:text-sm text-gray-300 min-w-[70px] sm:min-w-[80px] text-right">
                     {Math.floor(progress / 60)}:{String(Math.floor(progress % 60)).padStart(2, '0')} /
                     {Math.floor(duration / 60)}:{String(Math.floor(duration % 60)).padStart(2, '0')}
                   </span>
                 </div>
                 
                 {/* Volume Controls */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <button
                     onClick={toggleMute}
-                    className="p-2 text-gray-300 hover:text-[#FDBF50] transition-colors"
+                    className="p-2 text-gray-300 hover:text-[#FDBF50] transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
                     aria-label={isMuted ? 'Unmute' : 'Mute'}
                   >
-                    {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                    {isMuted || volume === 0 ? <VolumeX className="h-4 w-4 sm:h-5 sm:w-5" /> : <Volume2 className="h-4 w-4 sm:h-5 sm:w-5" />}
                   </button>
                   <input
                     type="range"
@@ -337,13 +337,13 @@ const QuranPlaylistPlayer = () => {
                     step={0.01}
                     value={volume}
                     onChange={handleVolumeChange}
-                    className="flex-1 h-2 bg-[#2A2C41] rounded-lg appearance-none cursor-pointer slider"
+                    className="flex-1 h-3 sm:h-2 bg-[#2A2C41] rounded-lg appearance-none cursor-pointer slider"
                     aria-label="Audio volume"
                   />
                 </div>
               </div>
               
-              <div className="mt-4 text-sm text-gray-300 space-y-1">
+              <div className="mt-4 text-xs sm:text-sm text-gray-300 space-y-1">
                 <div>Pages: {currentSurah.pages}</div>
                 <div>Revelation: {currentSurah.revelation}</div>
               </div>
@@ -352,32 +352,32 @@ const QuranPlaylistPlayer = () => {
             {/* Reading Button */}
             <button
               onClick={() => setShowReading(!showReading)}
-              className="w-full flex items-center justify-center gap-3 p-4 bg-[#8DA05E] text-white rounded-xl hover:bg-[#8DA05E]/80 transition-all duration-300 shadow-lg hover:scale-105"
+              className="w-full flex items-center justify-center gap-2 sm:gap-3 p-4 sm:p-5 bg-[#8DA05E] text-white rounded-xl hover:bg-[#8DA05E]/80 transition-all duration-300 shadow-lg hover:scale-105 min-h-[50px] text-sm sm:text-base font-medium"
             >
-              <BookOpen className="h-5 w-5" />
+              <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />
               {showReading ? 'Hide Reading' : 'Show Reading'}
             </button>
           </div>
 
           {/* Reading Section */}
           {showReading && (
-            <div className="bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl p-6 border border-[#FDBF50]/30 shadow-lg">
-              <h3 className="font-semibold text-xl mb-6 text-center text-[#FDBF50]">
+            <div className="bg-[#3A3C51]/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-[#FDBF50]/30 shadow-lg">
+              <h3 className="font-semibold text-lg sm:text-xl mb-4 sm:mb-6 text-center text-[#FDBF50]">
                 {currentSurah.arabic} - {currentSurah.name}
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="text-center">
-                  <div className="text-2xl font-serif text-[#FDBF50] mb-3">
+                  <div className="text-xl sm:text-2xl font-serif text-[#FDBF50] mb-2 sm:mb-3">
                     بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
                   </div>
-                  <div className="text-sm text-gray-300">In the name of Allah, the Entirely Merciful, the Especially Merciful</div>
+                  <div className="text-xs sm:text-sm text-gray-300">In the name of Allah, the Entirely Merciful, the Especially Merciful</div>
                 </div>
-                <div className="bg-[#2A2C41]/80 rounded-xl p-6 border border-[#FDBF50]/20">
-                  <div className="text-sm text-gray-400 mb-3">Reading Preview</div>
-                  <div className="text-right text-lg leading-relaxed mb-4">
+                <div className="bg-[#2A2C41]/80 rounded-xl p-4 sm:p-6 border border-[#FDBF50]/20">
+                  <div className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">Reading Preview</div>
+                  <div className="text-right text-base sm:text-lg leading-relaxed mb-3 sm:mb-4">
                     <div className="text-[#FDBF50]">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</div>
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-xs sm:text-sm text-gray-300">
                     [All] praise is [due] to Allah, Lord of the worlds
                   </div>
                 </div>
@@ -386,7 +386,7 @@ const QuranPlaylistPlayer = () => {
                     href={`https://quran.com/${currentSurah.number}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#FDBF50] text-[#2A2C41] rounded-xl hover:bg-[#FDBF50]/80 transition-all duration-300 shadow-lg hover:scale-105 font-semibold"
+                    className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-[#FDBF50] text-[#2A2C41] rounded-xl hover:bg-[#FDBF50]/80 transition-all duration-300 shadow-lg hover:scale-105 font-semibold text-sm sm:text-base"
                   >
                     <BookOpen className="h-4 w-4" />
                     Read Full Surah
@@ -401,21 +401,31 @@ const QuranPlaylistPlayer = () => {
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
-          height: 20px;
-          width: 20px;
+          height: 18px;
+          width: 18px;
           border-radius: 50%;
           background: #FDBF50;
           cursor: pointer;
           box-shadow: 0 0 10px rgba(253, 191, 80, 0.3);
         }
         .slider::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
+          height: 18px;
+          width: 18px;
           border-radius: 50%;
           background: #FDBF50;
           cursor: pointer;
           border: none;
           box-shadow: 0 0 10px rgba(253, 191, 80, 0.3);
+        }
+        @media (max-width: 640px) {
+          .slider::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+          }
+          .slider::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+          }
         }
       `}</style>
     </div>
