@@ -127,6 +127,10 @@ const QuranPlaylistPlayer = () => {
   const [showReading, setShowReading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [audioError, setAudioError] = useState<string | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
 
   const handlePlay = useCallback((surah: (typeof surahs)[0]) => {
     setCurrentSurah(surah);
@@ -157,6 +161,46 @@ const QuranPlaylistPlayer = () => {
       audioRef.current.play();
     }
   }, [currentSurah, isPlaying]);
+
+  // Progress and duration handlers
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const updateProgress = () => setProgress(audio.currentTime);
+    const setAudioDuration = () => setDuration(audio.duration);
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', setAudioDuration);
+    return () => {
+      audio.removeEventListener('timeupdate', updateProgress);
+      audio.removeEventListener('loadedmetadata', setAudioDuration);
+    };
+  }, [audioRef, currentSurah]);
+
+  // Volume handler
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
+
+  // Error handler
+  const handleAudioError = () => {
+    setAudioError('Failed to load audio. Please try again later.');
+    setIsPlaying(false);
+  };
+
+  // Seek handler
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = Number(e.target.value);
+      setProgress(Number(e.target.value));
+    }
+  };
+
+  // Volume change handler
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVolume(Number(e.target.value));
+  };
 
   const audioUrl = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${currentSurah.number}.mp3`;
 
@@ -224,6 +268,7 @@ const QuranPlaylistPlayer = () => {
               <button
                 onClick={togglePlayPause}
                 className="p-2 bg-[#FDBF50] text-[#2A2C41] rounded-full hover:bg-[#FDBF50]/80 transition-colors"
+                aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
               >
                 {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
               </button>
@@ -235,9 +280,43 @@ const QuranPlaylistPlayer = () => {
               onEnded={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onError={handleAudioError}
+              aria-label="Quran audio player"
             >
               Your browser does not support the audio element.
             </audio>
+            {audioError && (
+              <div className="text-red-400 text-sm mt-2">{audioError}</div>
+            )}
+            <div className="flex items-center gap-2 mt-3">
+              <input
+                type="range"
+                min={0}
+                max={duration || 1}
+                value={progress}
+                onChange={handleSeek}
+                className="flex-1 accent-[#FDBF50]"
+                aria-label="Seek audio"
+              />
+              <span className="text-xs text-gray-300 min-w-[60px] text-right">
+                {Math.floor(progress / 60)}:{String(Math.floor(progress % 60)).padStart(2, '0')} /
+                {Math.floor(duration / 60)}:{String(Math.floor(duration % 60)).padStart(2, '0')}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
+              <label htmlFor="volume-slider" className="text-xs text-gray-300">Volume</label>
+              <input
+                id="volume-slider"
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                value={volume}
+                onChange={handleVolumeChange}
+                className="accent-[#FDBF50]"
+                aria-label="Audio volume"
+              />
+            </div>
             <div className="mt-3 text-sm text-gray-300">
               <div>Pages: {currentSurah.pages}</div>
               <div>Revelation: {currentSurah.revelation}</div>
