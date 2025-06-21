@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import Sidebar from "@/components/Sidebar";
-import { ReactNode } from "react";
 import Providers from "@/components/Providers";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Noorion - Modern Islamic Social Platform",
