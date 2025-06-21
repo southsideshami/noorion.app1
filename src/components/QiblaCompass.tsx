@@ -69,28 +69,33 @@ export default function QiblaCompass() {
         setQiblaDirection(qibla);
         setPermissionGranted(true);
         setIsLoading(false);
+        setError(''); // Clear any previous errors
       },
       (error) => {
-        console.error('Geolocation error:', error);
+        // Don't log to console, just handle the error gracefully
+        let errorMessage = 'Unable to get your location.';
+        
         switch (error.code) {
           case error.PERMISSION_DENIED:
-            setError('Location permission denied. Please enable location access.');
+            errorMessage = 'Location permission denied. Please enable location access in your browser settings.';
             break;
           case error.POSITION_UNAVAILABLE:
-            setError('Location information unavailable.');
+            errorMessage = 'Location information is currently unavailable. Please try again.';
             break;
           case error.TIMEOUT:
-            setError('Location request timed out.');
+            errorMessage = 'Location request timed out. Please check your connection and try again.';
             break;
           default:
-            setError('An unknown error occurred.');
+            errorMessage = 'Unable to determine your location. Please try again.';
         }
+        
+        setError(errorMessage);
         setIsLoading(false);
       },
       {
         enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 60000
+        timeout: 15000, // Increased timeout
+        maximumAge: 300000 // 5 minutes cache
       }
     );
   }, []);
